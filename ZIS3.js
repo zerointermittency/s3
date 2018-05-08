@@ -7,7 +7,6 @@ const S3 = require('aws-sdk/clients/s3'),
     };
 
 class ZIS3 {
-
     constructor(s3 = {}) {
         if (!s3.accessKeyId && !s3.secretAccessKey)
             throw Error('zi-s3: accessKeyId & secretAccessKey are required');
@@ -40,7 +39,6 @@ class ZIS3 {
     get crud() {
         return core.crud(this);
     }
-
 }
 
 module.exports = ZIS3;

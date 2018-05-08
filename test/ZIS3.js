@@ -39,7 +39,9 @@ describe('ZIS3', () => {
             })
                 .then((data) => {
                     // console.log('#data', require('util').inspect(data, 0, 10, 1));
-                    _expect(data.location).to.be.equal('https://s3.amazonaws.com/nunchee1.0.0/test/sample.jpeg');
+                    _expect(data.location).to.be.equal(
+                        'https://s3.amazonaws.com/nunchee1.0.0/test/sample.jpeg'
+                    );
                     _expect(data.key).to.be.equal('test/sample.jpeg');
                     _expect(data.bucket).to.be.equal('nunchee1.0.0');
                     return Promise.resolve();
@@ -86,7 +88,6 @@ describe('ZIS3', () => {
                     done();
                 })
                 .catch(done);
-
         });
         it('delete', function(done) {
             this.timeout(4000);
@@ -106,7 +107,9 @@ describe('ZIS3', () => {
             })
                 .then((data) => {
                     // console.log('#data', require('util').inspect(data, 0, 10, 1));
-                    _expect(data.location).to.be.equal('https://s3.amazonaws.com/nunchee1.0.0/test/sample.json');
+                    _expect(data.location).to.be.equal(
+                        'https://s3.amazonaws.com/nunchee1.0.0/test/sample.json'
+                    );
                     _expect(data.key).to.be.equal('test/sample.json');
                     _expect(data.bucket).to.be.equal('nunchee1.0.0');
                     key = data.key;
@@ -121,7 +124,9 @@ describe('ZIS3', () => {
                     _expect(data.lastModified).to.exist;
                     return Promise.resolve();
                 })
-                .then(() => s3.crud.update({key: key, body: JSON.stringify({foo: 'bar', bar: 'foo'})}))
+                .then(() => s3.crud.update({
+                    key: key, body: JSON.stringify({foo: 'bar', bar: 'foo'}),
+                }))
                 .then((data) => {
                     // console.log('#data', require('util').inspect(data, 0, 10, 1));
                     _expect(data.ETag).to.exist;

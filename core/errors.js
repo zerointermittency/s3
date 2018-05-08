@@ -3,23 +3,21 @@
 const ZIError = require('@zerointermittency/error');
 
 class S3Error extends ZIError {
-
     constructor(opts) {
         opts.prefix = 'zi-s3';
         super(opts);
     }
-
 }
 
 module.exports = {
-    internal: (extra) => new S3Error({
+    internal: extra => new S3Error({
         code: 100,
         name: 'internal',
         message: 'Internal error',
         level: ZIError.level.fatal,
         extra: extra,
     }),
-    notFound: (extra) => new S3Error({
+    notFound: extra => new S3Error({
         code: 101,
         name: 'notFound',
         message: 'Not found',

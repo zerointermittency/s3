@@ -1,3 +1,11 @@
+[![Build Status](https://travis-ci.org/zerointermittency/s3.svg?branch=master)](https://travis-ci.org/zerointermittency/s3)
+[![Maintainability](https://api.codeclimate.com/v1/badges/c3afc1fac7199fbbc9d5/maintainability)](https://codeclimate.com/github/zerointermittency/s3/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c3afc1fac7199fbbc9d5/test_coverage)](https://codeclimate.com/github/zerointermittency/s3/test_coverage)
+[![npm version](https://badge.fury.io/js/%40zerointermittency%2Fs3.svg)](https://badge.fury.io/js/%40zerointermittency%2Fs3)
+[![Downloads](https://img.shields.io/npm/dt/@zerointermittency/s3.svg)](https://www.npmjs.com/package/@zerointermittency/s3)
+[![dependency status](https://david-dm.org/zerointermittency/s3.svg)](https://david-dm.org/zerointermittency/s3)
+[![devDependency status](https://david-dm.org/zerointermittency/s3/dev-status.svg)](https://david-dm.org/zerointermittency/s3)
+
 # Bienvenido
 
 Este modulo es el encargado de proporcionar las funcionalidades para utilizar las características del servicio [S3][s3] de Amazon Web Services.
@@ -91,6 +99,12 @@ s3.crud.create(opts)
         - bucket-owner-read
         - bucket-owner-full-control
     - bucket \(*String*\): nombre que identifica el **bucket**, por defecto **bucket en el constructor de ZIS3**
+    - storageClass \(*String*\): La clase de almacenamiento utilizada para almacenar el objeto, por defecto "STANDARD_IA":
+        - STANDARD
+        - REDUCED_REDUNDANCY
+        - GLACIER
+        - STANDARD_IA
+        - ONEZONE_IA
 
 > mas información sobre estas opciones en la [documentación][aws-sdk-s3]
 
@@ -184,14 +198,7 @@ yarn test
 
 ## Changelog
 
-Todos los cambios importantes son escritos aquí. El Formato esta basado en [Keep a Changelog](http://keepachangelog.com/es-ES/1.0.0/)
-
-### [Unreleased]
-
-### [1.0.0] - 2018-01-08
-#### Added
-- Se agregan pruebas funcionales con el objetivo de tener probado todo el código, usando [istanbul js][istanbul] para saber cuanto
-- CRUD para manipulación de **[archivos][s3]**
+Todos los cambios importantes son escritos [aquí](CHANGELOG.md).
 
 [s3]: https://aws.amazon.com/es/s3/
 [aws-sdk]: https://www.npmjs.com/package/aws-sdk

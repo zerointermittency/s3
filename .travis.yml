@@ -1,0 +1,23 @@
+addons:
+  code_climate:
+    repo_token:
+      secure: "kfOFx/vbAGrHv5b3jwkuSD8cwB2G80F6ln8gJuSd9eBPlPwnTNXWjePjdooejD1bR00G0g83XuhEDh6q6C86AI7UpqoS666RRVDsJPTu7v9Ke9eWAm7IIDdp7OK/H3AWFLC+n45TMDSpEGZuw4z7zV6HsEWahoA+HMftSEklz2s/PfKXl8Ma/1MLE9tiZZieG0lluLoYB00qH0SkkRSKNnA5eglvWuuA/UJmlakhDyqTiBS8ZWZ/NyXWYuQ731bP69kVoi/3PdR9eTyTZ0gpYu14CksGBaLmLzH0IfIvRLrUzIix/jdLj27ou3IAqEyUC8Js7U4iAvBFpOPSljA62NoDTKNPyl6+UCk2Z7dgFGoma5WWVtxT93v4i0lSHC6Cjs6CKxLp8jM+8bDPMbtA4UdcVM7SbdFjvoz8xC3N0K102DDLPSxXh07wtHbaVlt1Hhb4RwMxyFq7UzGh52RHsIj203TSyUvCgZ4zWX7/W1DUAJrz9noekAYwyz28PKL8bcYIa7l85iUAaN7wJ8xDT3tGkyxGcaOEMNUEO97ABEcm1+k64CNEXxhLpHPjVvXLiLx6GftKlSOW0x4mBPiHVIdCgTJo3Bxyze8yzj4JcGd2XSQ655JbUb6Sd+VrbPCCfDRSti1Zp1hkO41fYvfY2BoOmfNsPN1m/pEBNoexBXw="
+plugins:
+  nodesecurity:
+    enabled: true
+language: node_js
+node_js:
+- '6'
+- '7'
+- lts/*
+sudo: false
+cache:
+  directories:
+  - node_modules
+before_script:
+- npm install -g codeclimate-test-reporter
+script:
+- npm run eslint
+- npm run nyc
+after_script:
+- codeclimate-test-reporter < ./coverage/lcov.info

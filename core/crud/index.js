@@ -8,12 +8,13 @@ module.exports = (self) => {
     return {
         create: ({
             acl = 'public-read', bucket, key, contentType, body, expire,
+            storageClass = 'STANDARD_IA',
         }) => new Promise((res, rej) => {
             self._head(key, bucket)
                 .then(() => rej(core.errors.alreadyExist))
                 .catch((err) => {
                     /* istanbul ignore else */
-                    if (err.name === 'notFound') {
+                    if (err.name === 'notFound')
                         self.s3.upload(
                             {
                                 ACL: acl,
@@ -22,6 +23,7 @@ module.exports = (self) => {
                                 ContentType: contentType,
                                 Body: body,
                                 Expires: expire,
+                                StorageClass: storageClass,
                             },
                             (err, data) => {
                                 /* istanbul ignore if */
@@ -33,7 +35,7 @@ module.exports = (self) => {
                                 });
                             }
                         );
-                    } else return rej(err);
+                    else return rej(err);
                 });
         }),
         read: (key, bucket) => new Promise((res, rej) => {
@@ -59,6 +61,7 @@ module.exports = (self) => {
         }),
         update: ({
             acl = 'public-read', bucket, key, contentType, body, expire,
+            storageClass = 'STANDARD_IA',
         }) => new Promise((res, rej) => {
             self._head(key, bucket)
                 .then((data) => {
@@ -70,6 +73,7 @@ module.exports = (self) => {
                             ContentType: contentType || data.ContentType,
                             Body: body,
                             Expires: expire,
+                            StorageClass: storageClass,
                         },
                         (err, data) => {
                             /* istanbul ignore if */
